@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Noor 💗</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#fff0f6,#ffc5dc);
+    color:#8b3a5c;
+    text-align:center;
+}
+
+.page{
+    display:none;
+    height:100vh;
+    width:100%;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.page.active{
+    display:flex;
+}
+
+.card{
+    width:92%;
+    max-width:650px;
+    padding:35px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,.75);
+    box-shadow:0 15px 45px rgba(200,70,120,.2);
+}
+
+h1{
+    color:#e64f8a;
+    font-size:clamp(38px,10vw,65px);
+}
+
+h2{
+    color:#d94c83;
+    font-size:clamp(28px,7vw,45px);
+}
+
+p{
+    font-size:18px;
+    line-height:1.7;
+}
+
+button{
+    border:none;
+    padding:14px 30px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#f58bb4,#df4f88);
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+    box-shadow:0 8px 20px #eaa0bd;
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+.heart{
+    font-size:65px;
+    animation:float 2s infinite;
+}
+
+@keyframes float{
+    50%{transform:translateY(-12px)}
+}
+
+/* COUNTDOWN */
+
+.count{
+    font-size:150px;
+    font-weight:bold;
+    color:#e34f89;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.1)}
+}
+
+/* FIREWORKS */
+
+.firework{
+    position:absolute;
+    font-size:45px;
+    animation:fire 2s forwards;
+}
+
+@keyframes fire{
+    0%{
+        transform:scale(.1);
+        opacity:0;
+    }
+    30%{
+        transform:scale(1.5);
+        opacity:1;
+    }
+    100%{
+        transform:scale(.8) translateY(-40px);
+        opacity:0;
+    }
+}
+
+/* CAKE */
+
+.cake{
+    width:230px;
+    height:170px;
+    margin:30px auto;
+    position:relative;
+    cursor:pointer;
+}
+
+.layer1{
+    position:absolute;
+    bottom:0;
+    left:10px;
+    width:210px;
+    height:65px;
+    background:#ff91ba;
+    border-radius:20px;
+}
+
+.layer2{
+    position:absolute;
+    bottom:55px;
+    left:30px;
+    width:170px;
+    height:55px;
+    background:#ffb5d0;
+    border-radius:18px;
+}
+
+.cream{
+    position:absolute;
+    bottom:95px;
+    left:30px;
+    width:170px;
+    height:30px;
+    background:white;
+    border-radius:20px;
+}
+
+.candle{
+    position:absolute;
+    bottom:120px;
+    left:109px;
+    width:13px;
+    height:45px;
+    background:#f58eb4;
+    border-radius:5px;
+}
+
+.flame{
+    position:absolute;
+    bottom:157px;
+    left:100px;
+    font-size:30px;
+}
+
+.off{
+    display:none;
+}
+
+/* WISHES */
+
+.wishes{
+    font-family:Georgia,serif;
+    font-size:19px;
+}
+
+/* HUG */
+
+.hug{
+    font-size:130px;
+    animation:hug 1.3s infinite;
+}
+
+@keyframes hug{
+    50%{transform:scale(1.12)}
+}
+
+/* FINAL */
+
+.love{
+    font-size:clamp(38px,10vw,70px);
+    font-weight:bold;
+    color:#e44383;
+    animation:love 1s infinite alternate;
+}
+
+@keyframes love{
+    to{transform:scale(1.06)}
+}
+
+.balloon{
+    position:absolute;
+    bottom:-100px;
+    font-size:60px;
+    animation:balloon 7s linear infinite;
+}
+
+@keyframes balloon{
+    to{
+        transform:translateY(-120vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- START -->
+
+<div class="page active" id="page0">
+<div class="card">
+
+<div class="heart">💗</div>
+
+<h2>A Special Surprise For...</h2>
+
+<h1>Noor 🎀</h1>
+
+<p>
+My sweetest bestie, are you ready? 🥹✨
+</p>
+
+<button onclick="startCountdown()">
+START THE SURPRISE 💕
+</button>
+
+</div>
+</div>
+
+
+<!-- COUNTDOWN -->
+
+<div class="page" id="page1">
+<div class="card">
+
+<p>Something magical is coming...</p>
+
+<div class="count" id="number">10</div>
+
+<p>Get ready Noor! 🎀</p>
+
+</div>
+</div>
+
+
+<!-- MIDNIGHT -->
+
+<div class="page" id="page2">
+
+<div id="fireworks"></div>
+
+<div class="card">
+
+<h1>12:00 💕</h1>
+
+<h2>HAPPY BIRTHDAY NOOR! 🎂</h2>
+
+<p>
+✨ Today is YOUR special day! ✨
+</p>
+
+<p>
+May your day be filled with smiles,
+love and beautiful surprises. 🌸
+</p>
+
+<button onclick="nextPage(3)">
+NEXT 🎀
+</button>
+
+</div>
+</div>
+
+
+<!-- CAKE -->
+
+<div class="page" id="page3">
+
+<div class="card">
+
+<h2>A Cake Just For You 🎂</h2>
+
+<div class="cake" onclick="blowCake()">
+
+<div class="layer1"></div>
+<div class="layer2"></div>
+<div class="cream"></div>
+<div class="candle"></div>
+
+<div class="flame" id="flame">
+🔥
+</div>
+
+</div>
+
+<p id="cakeText">
+Tap the cake# Bestie-Noor-bday-
